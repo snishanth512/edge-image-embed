@@ -1,0 +1,35 @@
+[tool.poetry]
+name = "edge-image-embed"
+version = "0.1.0"
+description = "Edge AI Image Embedding generation tool optimized for resource-constrained platforms."
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [
+    { include = "model_inference" },
+    { include = "model_training" },
+    { include = "model_evaluation" },
+    { include = "model_deployment" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+torch = {version = "^2.2.0", source = "pytorch-cpu"}
+torchvision = {version = "^0.17.0", source = "pytorch-cpu"}
+transformers = "^4.38.0"
+pillow = "^10.2.0"
+huggingface-hub = "^0.20.0"
+
+[[tool.poetry.source]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+priority = "explicit"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+isort = "^5.13.0"
+flake8 = "^7.0.0"
+pytest = "^8.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
