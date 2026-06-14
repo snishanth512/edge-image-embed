@@ -27,7 +27,9 @@ def get_embedder(model_name: str):
 
     config = MODEL_MAPPING[model_name]
     embedder_class = EMBEDDER_CLASSES[model_name]
-    return embedder_class(repo_id=config["repo_id"])
+    return embedder_class(
+        repo_id=config["repo_id"], revision=config.get("revision", "main")
+    )
 
 
 def main():
