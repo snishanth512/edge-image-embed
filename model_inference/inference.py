@@ -1,13 +1,14 @@
 import argparse
 import sys
+
 from PIL import Image
 
 # Use relative imports if running as package, fallback to absolute imports
 try:
-    from model_inference.config import MODEL_MAPPING, DEFAULT_MODEL
+    from model_inference.config import DEFAULT_MODEL, MODEL_MAPPING
     from model_inference.models.mobilenet_v3 import MobileNetV3Embedder
 except ImportError:
-    from config import MODEL_MAPPING, DEFAULT_MODEL
+    from config import DEFAULT_MODEL, MODEL_MAPPING
     from models.mobilenet_v3 import MobileNetV3Embedder
 
 # Registry mapping model keys to their wrapper classes
