@@ -11,15 +11,14 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - name: AI PR Review
-        uses: coderabbitai/ai-pr-reviewer@latest
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Chat GPT Code Review
+        uses: anc95/ChatGPT-CodeReview@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # Requires setting up OPENAI_API_KEY in repository secrets
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        with:
-          debug: false
-          path_filters: |
-            !dist/**
-            !**/*.min.js
-            !poetry.lock
+          # Optional configurations:
+          # MODEL: gpt-4
+          # LANGUAGE: English
